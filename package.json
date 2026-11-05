@@ -2,18 +2,35 @@
   "name": "backenduzina",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test tests/*.test.js",
+    "db:init": "node createtable.js",
+    "sync:frontend": "node scripts/sync-frontend.js",
+    "cv:cleanup": "node scripts/cleanup-cv.js",
+    "verify:online": "node scripts/verify-online.js",
+    "prepare:render": "node scripts/prepare-render-env.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
     "express": "^5.3.0",
-    "sqlite3": "^6.0.1"
+    "multer": "^2.5.0",
+    "pg": "^8.23.1"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.15",
+    "jsdom": "^31.0.0",
+    "sqlite3": "^6.0.1",
+    "yaml": "^2.9.1"
   }
 }
